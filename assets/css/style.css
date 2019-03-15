@@ -1,0 +1,239 @@
+:root{
+	/* font-family heading */
+	--primary-font-family-heading: 'Open Sans', sans-serif;
+	--primary-font-family-sub-heading: 'Source Sans Pro', sans-serif;
+	
+	/* font-family paragraph */
+	--primary-font-family-paragraph: 'Raleway', sans-serif;
+	--primary-font-family-sub-paragraph: 'Source Sans Pro', sans-serif;
+	
+	--font-family-dosis: 'Dosis', sans-serif;
+
+	/* colors */
+	--primary-color: #ffb732;
+	--secondry-color: #6C63FF;
+	--black-color: #424242;
+}
+.paragraph{
+	color: var(--black-color) !important;
+	font-size: 18px !important;
+}
+.black-color{
+	color: var(--black-color) !important;
+}
+body{
+	font-family: var(--primary-font-family-sub-heading) !important;
+}
+.uk-section-primary .uk-navbar-container .uk-container .uk-logo{
+	color: var(--primary-color) !important;
+}
+.uk-section-primary{
+	height: 90vh !important;
+	background-size: cover !important;
+}
+.uk-section-primary .bg-color{
+	/*background-color: rgba(34, 35, 53, 0.9);*/
+	/*background-color: rgba(76,76,255,0.3);*/
+    /*background-image: linear-gradient(to right top, #3a3d4e, #35364e, #312f4d, #2e274b, #2d1f48, #2b1d45, #291a43, #271840, #231b3d, #201d39, #1f1e34, #1e1f2f);*/
+	/*background-image: linear-gradient(to right top, #8527af, #7a25a5, #6f239c, #642092, #5a1e88, #4c2080, #3f2077, #33206e, #212162, #121f54, #071d46, #051937);*/
+	background-image: linear-gradient(to right top, #493267, #4a2f6b, #4a2b6f, #4b2772, #4c2276, #442173, #3c2171, #33206e, #212162, #121f54, #071d46, #051937);
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 90vh;
+	width: 100%;
+
+}
+.uk-section-primary .uk-navbar-container .uk-container .uk-navbar-nav .uk-nav li a{
+	font-size: 16px !important;
+}
+#mobile-nav .uk-modal-body{
+	border-radius: 4px !important;
+}
+#mobile-nav .uk-modal-body .get_start{
+	color: #bd9bd2 !important;
+}
+#mobile-nav .uk-modal-body .template{
+	color: #9aa3d3 !important;
+}
+#mobile-nav .uk-modal-body .uk-child-width-1-2 .frameworks{
+	color: #5766B6 !important;
+}
+#mobile-nav .uk-modal-body h5 .about{
+	color: #de5f83 !important;
+	font-weight: 500;
+}#mobile-nav .uk-modal-body h5 .contect{
+	color: #1db189 !important;
+	font-weight: 500;
+}
+#intro .uk-container-small .uk-grid-match h1{
+	/*font-family: 'Open Sans', sans-serif !important;*/
+	font-family: var(--primary-font-family-heading)
+	font-size: 35px !important;
+}
+#intro .uk-container-small .uk-grid-match p{
+	font-family: var(--primary-font-family-paragraph);
+	font-size: 22px !important;
+}
+#intro .uk-container-small .uk-grid-match p strong{
+	font-weight: 500;
+}
+#template .uk-container .uk-grid-match .uk-card{
+	border-radius: 4px !important;
+}
+#template .uk-container .uk-grid-match .uk-card .uk-card-media-top img{
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+#contect{
+	/*background-color: rgba(31,32,48,0.9);*/
+	/*background-image: linear-gradient(to right top, #3a3d4e, #35364e, #312f4d, #2e274b, #2d1f48, #2b1d45, #291a43, #271840, #231b3d, #201d39, #1f1e34, #1e1f2f);*/
+	/*background-image: linear-gradient(to right top, #8527af, #7a25a5, #6f239c, #642092, #5a1e88, #4c2080, #3f2077, #33206e, #212162, #121f54, #071d46, #051937);*/
+	background-image: linear-gradient(to right top, #493267, #4a2f6b, #4a2b6f, #4b2772, #4c2276, #442173, #3c2171, #33206e, #212162, #121f54, #071d46, #051937);
+}
+#contect .contect_head,
+#contect .uk-container .uk-grid-match h2{
+	/*color: #fff;*/
+}
+.uk-section-primary .background .uk-container .heading{
+	font-size: 60px !important;
+}
+.uk-section-primary .background .uk-container .sub-heading{
+	font-family: var(--font-family-dosis);
+	font-size: 35px;
+}
+
+
+
+
+
+
+
+/* CONTECT PAGE */
+
+#carousel_section{
+	height: 40vh !important;
+	/*background-size: cover !important;*/
+}
+#carousel_section .bg-color{
+	background-color: rgba(34, 35, 53, 0.9);
+	/*background-color: rgba(76,76,255,0.3);*/
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 40vh;
+	width: 100%;
+}
+.uk-section-primary .background .uk-container .conect-sub-heading{
+	font-family: var(--font-family-dosis);
+	font-size: 25px;
+}
+/* ! CONTECT PAGE */
+
+
+/* TEMPLATE PAGE */
+#template_section{
+	height: 40vh !important;
+}
+#template_section .bg-color{
+	background-color: rgba(34, 35, 53, 0.9) !important;
+	/*background-color: rgba(76,76,255,0.3);*/
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 40vh;
+	width: 100%;
+}
+.template .uk-container .uk-card .temp_download{
+	background-color: var(--secondry-color);
+	/*background-color: #3b5998;*/
+	color: #fff;
+}
+.template .uk-container .uk-card .live_pre{
+	/*color: var(--primary-color) !important;*/
+	color: #a6a1ff;
+	border: 1px solid #a6a1ff !important;
+}
+.template .uk-container .uk-card .live_pre:hover{
+	color: var(--secondry-color) !important;
+	border: 1px solid var(--secondry-color) !important;
+}
+/* ! TEMPLATE PAGE */
+
+
+
+
+/* MEDIA QUERYS */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px){
+	.uk-section-primary .background .uk-container .heading{
+		font-size: 32px !important;
+	}
+	.uk-section-primary .background .uk-container .sub-heading{
+		font-size: 25px !important;
+	}
+
+	/*contec page sub-heading*/
+	.uk-section-primary .background .uk-container .conect-sub-heading{
+		font-size: 20px !important;
+	}
+
+	/*contect background*/
+	#template_section{
+		height: 30vh !important;
+	}
+	#template_section .bg-color{
+		background-color: rgba(34, 35, 53, 0.9);
+		/*background-color: rgba(76,76,255,0.3);*/
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 30vh;
+		width: 100%;
+	}
+
+	/*template heading*/
+	.uk-section-primary .background .uk-container .temp_heading{
+		font-size: 25px !important;
+	}
+}
+
+
+
+
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+@media (min-width: 481px) and (max-width: 767px) {
+  
+  	.uk-section-primary .background .uk-container .heading{
+		font-size: 40px !important;
+	}
+
+	/*contec page sub-heading*/
+  	.uk-section-primary .background .uk-container .conect-sub-heading{
+		font-size: 22px !important;
+	}
+
+	/*contect background*/
+	#template_section{
+		height: 30vh !important;
+	}
+	#template_section .bg-color{
+		background-color: rgba(34, 35, 53, 0.9);
+		/*background-color: rgba(76,76,255,0.3);*/
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 30vh;
+		width: 100%;
+	}
+
+	/*template heading*/
+	.uk-section-primary .background .uk-container .temp_heading{
+		font-size: 25px !important;
+	}
+  
+}
