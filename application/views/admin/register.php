@@ -23,7 +23,8 @@
 				<div class="uk-card uk-card-default uk-card-small uk-border-rounded uk-card-body uk-width-1-3@m">
 				    <!-- <h3 class="uk-card-title">Default</h3> -->
 						
-						<form class="uk-form-stacked">
+						<!-- <form class="uk-form-stacked"> -->
+						<?= form_open('admin/signup',['class'=>'uk-form-stacked']) ?>
 						    <fieldset class="uk-fieldset">
 
 						        <legend class="uk-legend uk-text-bold">Register</legend>
@@ -31,29 +32,33 @@
 
 								<div class="uk-margin">
 						            <!-- <input class="uk-input" type="text" placeholder="Username"> -->
-                                    <label class="uk-form-label" for="form-stacked-text">Username</label>
+                                    <label class="uk-form-label" for="username">Username</label>
                                     <div class="uk-form-controls">
-                                        <input class="uk-input" id="form-stacked-text" type="text" placeholder="Your Username...">
+                                        <input class="uk-input" id="username" name="username" type="text" placeholder="Your Username...">
                                     </div>
+                                    <?= form_error('username') ?>
                                 </div>
 						        <div class="uk-margin">
-                                    <label class="uk-form-label" for="form-stacked-text">Email</label>
+                                    <label class="uk-form-label" for="email">Email</label>
                                     <div class="uk-form-controls">
-                                        <input class="uk-input" id="form-stacked-text" type="text" placeholder="Your Email...">
+                                        <input class="uk-input" id="email" name="email" type="text" placeholder="Your Email...">
                                     </div>
+                                    <?= form_error('email') ?>
 						        </div>
 
 						        <div class="uk-margin">
-                                    <label class="uk-form-label" for="form-stacked-text">Password</label>
+                                    <label class="uk-form-label" for="password">Password</label>
                                     <div class="uk-form-controls">
-                                        <input class="uk-input" id="form-stacked-text" type="text" placeholder="Your Password...">
+                                        <input class="uk-input" id="password" name="password" type="password" placeholder="Your Password...">
                                     </div>
+                                    <?= form_error('password') ?>
 						        </div>
 								
-								<button class=" uk-width-1-1 uk-button uk-border-rounded">Create Account</button>
+								<button type="submit" class=" uk-width-1-1 uk-button uk-border-rounded">Create Account</button>
 						    	
 						    </fieldset>
-						</form>
+						<!-- </form> -->
+						<?= form_close() ?>
 				</div>
 			    
 			</div>

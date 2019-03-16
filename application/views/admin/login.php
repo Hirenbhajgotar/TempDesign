@@ -13,8 +13,25 @@
 </head>
 <body style="background-image: linear-gradient(to right top, #493267, #4a2f6b, #4a2b6f, #4b2772, #4c2276, #442173, #3c2171, #33206e, #212162, #121f54, #071d46, #051937);">
 
-	<div class="uk-section login_page">
+	<div class="uk-section uk-section-small login_page">
 		<div class="uk-container">
+
+		    <div class="uk-flex uk-flex-center uk-margin-bottom">
+		    	<?php
+					if ($msg = $this->session->flashdata('msg')) {
+							if (isset($msg)) {
+								$message = $msg;
+								?>
+								<div class="uk-alert-danger uk-animation-slide-top" uk-alert>
+							    	<a class="uk-alert-close" uk-close></a>
+								    <p class="uk-margin-right"><i class="fas fa-exclamation-circle"></i> <?php echo $message ?></p>
+								</div>
+								<?php
+							}
+						}	
+					
+					?>
+		    </div>
 
 		    <div class="uk-flex uk-flex-center">
 		    	<p class="uk-text-bold heading">TempDesign</p>
@@ -23,30 +40,34 @@
 				<div class="uk-card uk-card-default uk-card-small uk-border-rounded uk-card-body uk-width-1-4@m">
 				    <!-- <h3 class="uk-card-title">Default</h3> -->
 						
-						<form class="uk-form-stacked">
+						<!-- <form class="uk-form-stacked"> -->
+						<?= form_open('admin/login',['class'=>'uk-form-stacked']) ?>
 						    <fieldset class="uk-fieldset">
 
 						        <legend class="uk-legend uk-text-bold">Login</legend>
 							    <p class="uk-text-meta">Login to your account</p>
 
 						        <div class="uk-margin">
-                                    <label class="uk-form-label" for="form-stacked-text">Email</label>
+                                    <label class="uk-form-label" for="email">Email</label>
                                     <div class="uk-form-controls">
-                                        <input class="uk-input" id="form-stacked-text" type="email" placeholder="Your Email...">
+                                        <input class="uk-input" id="email" name="email" type="email" placeholder="Your Email...">
                                     </div>
+                                    <?= form_error('email') ?>
 						        </div>
 
 						        <div class="uk-margin">
-                                    <label class="uk-form-label" for="form-stacked-text">Password</label>
+                                    <label class="uk-form-label" for="password">Password</label>
                                     <div class="uk-form-controls">
-                                        <input class="uk-input" id="form-stacked-text" type="password" placeholder="Your Password...">
+                                        <input class="uk-input" id="password" name="password" type="password" placeholder="Your Password...">
                                     </div>
+                                    <?= form_error('password') ?>
 						        </div>
 								
-								<button class=" uk-width-1-1 uk-button uk-border-rounded">Login</button>
+								<button type="submit" class=" uk-width-1-1 uk-button uk-border-rounded">Login</button>
 						    	
 						    </fieldset>
-						</form>
+						<!-- </form> -->
+						<?= form_close() ?>
 				</div>
 			    
 			</div>

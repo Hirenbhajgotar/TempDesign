@@ -34,7 +34,7 @@
                                    <li><a href="#">Edit Profile</a></li>
                                    <li class="uk-nav-header">Actions</li>
                                    <li><a href="#">Lock</a></li>
-                                   <li><a href="#">Logout</a></li>
+                                   <li><a href="<?= base_url('Admin/logout') ?>">Logout</a></li>
                                </ul>
                             </div>
                         </li>
@@ -65,7 +65,7 @@
             <div class="uk-position-bottom">
                 <hr class="uk-divider-small uk-text-center">
                 
-                <li><a href="#!" class="uk-text-center uk-link-reset uk-flex uk-flex-middle uk-margin-medium">Logout <i class="fas fa-power-off"></i></a></li>
+                <li><a href="<?= base_url('admin/logout') ?>" class="uk-text-center uk-link-reset uk-flex uk-flex-middle uk-margin-medium"><i class="fas fa-power-off"></i> Logout</a></li>
             </div>
         </ul>
     </div>
