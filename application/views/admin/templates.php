@@ -25,17 +25,19 @@
                     </a>
                 </div>
                 <div class="uk-navbar-right uk-navbar-item uk-light">
-                    <button uk-toggle="target: #add_temp_modal" class="uk-button uk-visible@s uk-button-default uk-flex uk-flex-middle" style="border-radius: 500px">Add template &nbsp;<span uk-icon="plus-circle"></span></button>
+                    <!-- <button uk-toggle="target: #add_temp_modal" class="uk-button uk-visible@s uk-button-default uk-flex uk-flex-middle" style="border-radius: 500px">Add template &nbsp;<span uk-icon="plus-circle"></span></button> -->
+                    <a href="<?= base_url('template/add_template') ?>" class="uk-button uk-visible@s uk-button-default uk-flex uk-flex-middle" style="border-radius: 500px">Add template &nbsp;<span uk-icon="plus-circle"></span></a>
+
                     <ul class="uk-navbar-nav uk-visible@s">
                         <li class="uk-active">
-                            <a href="#">Hiren <span uk-icon="chevron-down"></span></a>
+                            <a href="#">Hiren&nbsp;<i class="fas fa-angle-down"></i></a>
                             <div uk-dropdown="pos: bottom-right; mode: click; offset: -17;">
                                <ul class="uk-nav uk-navbar-dropdown-nav">
                                    <li class="uk-nav-header">Options</li>
                                    <li><a href="#">Edit Profile</a></li>
                                    <li class="uk-nav-header">Actions</li>
                                    <li><a href="#">Lock</a></li>
-                                   <li><a href="#">Logout</a></li>
+                                   <li><a href="<?= base_url('admin/logout') ?>">Logout</a></li>
                                </ul>
                             </div>
                         </li>
@@ -67,7 +69,7 @@
             <div class="uk-position-bottom">
                 <hr class="uk-divider-small uk-text-center">
                 
-                <li><a href="#!" class="uk-text-center uk-link-reset uk-flex uk-flex-middle uk-margin-medium">Logout <i class="fas fa-power-off"></i></a></li>
+                <li><a href="<?= base_url('admin/logout') ?>" class="uk-text-center uk-link-reset uk-flex uk-flex-middle uk-margin-medium">Logout <i class="fas fa-power-off"></i></a></li>
             </div>
         </ul>
     </div>
@@ -93,7 +95,7 @@
                             <thead>
                                 <tr>
                                     <th ">No.</th>
-                                    <th class="uk-width-small">Header</th>
+                                    <th class="uk-width-small">Heading</th>
                                     <th>Template</th>
                                     <th>Upload at</th>
                                     <th>Update at</th>
@@ -103,6 +105,31 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php
+                                    if (isset($templates)) {
+                                        if (count($templates)) {
+                                            $count = $this->uri->segment(3);
+                                        }
+                                    }
+                                ?>
+                                <?php
+                                    foreach ($templates as $data) {?>
+                                        <tr>
+                                            <td><?= ++$count ?></td>
+                                            <td class="uk-text-truncate"><?= $data->temp_header ?></td>
+                                            <td><img data-src="<?= base_url('image_upload/'.$data->temp_image) ?>" style="width: 130px; height: 100px" uk-img alt=""></td>
+                                            <td><?= $data->upload_at ?></td>
+                                            <td><?= $data->update_at ?></td>
+                                            <!-- <td><button class="blue-color uk-button uk-button-default" type="button"><i class="far fa-eye"></i></button></td> -->
+                                            <td><?php echo anchor("Template/preview/{$data->id}","<i class='far fa-eye'></i>",['class'=>'blue-color uk-button uk-button-default','terget'=>'_blank']) ?></td>
+                                            <td><?= anchor("Template/edit_template/{$data->id}","<i class='fas fa-pencil-alt'></i>", ['class'=>'yellow-color uk-button uk-button-default']) ?></td>
+                                            <td><?= anchor("Template/del_template/{$data->id}","<i class='far fa-trash-alt'></i>",['class'=>'red-color uk-button uk-button-default']); ?></td>
+                                        </tr>
+                                    <?php
+                                    }
+                                
+                                
+                                ?>
                                 <tr>
                                     <td>1</td>
                                     <td class="uk-text-truncate">Creative Table Assignment</td>
@@ -133,88 +160,6 @@
             </div>
         </div>
 
-
-
-
-        
-        <!-- This is the Add template modal -->
-        <div id="add_temp_modal" uk-modal>
-            <div class="uk-modal-dialog uk-modal-body uk-text-center uk-border-rounded">
-                <button class="uk-modal-close-default" type="button" uk-close></button>
-                <h2 class="uk-modal-title">Add Template</h2>
-                <hr class="uk-divider-small">
-                <form action="#!" class="uk-margin-large-top">
-                    <div class="uk-margin">
-                        <div class="uk-inline">
-                            <i class="fas fa-pen icon uk-form-icon"></i>
-                            <input class="uk-input uk-form-width-large" type="text" placeholder="template header">
-                        </div>
-                    </div>
-
-                    <div class="uk-margin">
-                        <div class="uk-inline">
-                            <i class="fas fa-pen icon  uk-form-icon"></i>
-                            <input class="uk-input uk-form-width-large" type="text" placeholder="Sub heading">
-                        </div>
-                    </div>
-                    <div class="uk-margin">
-                        <div class="uk-inline">
-                            <i class="fas fa-image icon  uk-form-icon"></i>
-                            <input class="uk-input uk-form-width-large" type="text" placeholder="Template image">
-                        </div>
-                    </div>
-                    <div class="uk-margin">
-                        <div class="uk-inline">
-                            <i class="fas fa-file-archive icon  uk-form-icon"></i>
-                            <input class="uk-input uk-form-width-large" type="text" placeholder="Template zip">
-                        </div>
-                    </div>
-                    <div class="uk-text-left uk-margin-left">
-                        
-                        <button class="uk-button uk-button-primary uk-width-1-3@m">Submit</button>
-                        <button class="uk-button uk-button-danger uk-width-1-3@m">Cancle</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-
-
-
-
-
-				
-		<h1>hien</h1>
-
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-
-
-
     </div>
 
 
@@ -227,13 +172,40 @@
 
 
 
+<?php include 'footer.php' ?>
 
+<?php
+    if ($success = $this->session->flashdata('success')) {
+        if (isset($success)) {
+            $success_msg = $success;
+            ?>
+            <script>
+                UIkit.notification({
+                    message: '<?php echo $success_msg ?>'+' <i class="far fa-grin-beam"></i>',
+                    status: 'success',
+                    pos: 'top-right',
+                    timeout: 5000
+                });
+            </script>
+            <?php
+        }
+    }
+    
+    if ($error = $this->session->flashdata('error')) {
+        if (isset($error)) {
+            $error_msg = $error;
+            ?>
+            <script>
+                UIkit.notification({
+                    message: '<i class="fas fa-exclamation"></i> '+'<?php echo $error_msg ?>'+' <i class="fas fa-sad-tear"></i>',
+                    status: 'danger',
+                    pos: 'top-right',
+                    timeout: 5000
+                });
+            </script>
+            <?php
+        }
+    }
+   
 
-	<script src="<?= base_url('assets/admin/js/jquery-3.3.1.min.js') ?>"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.min.js" integrity="sha256-rqEXy4JTnKZom8mLVQpvni3QHbynfjPmPxQVsPZgmJY=" crossorigin="anonymous"></script>
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> -->
-	<script src="<?= base_url('assets/js/uikit.min.js') ?>"></script>
-	<script src="<?= base_url('assets/js/uikit-icons.min.js') ?>"></script>
-	<script src="<?= base_url('assets/admin/js/admin_script.js') ?>"></script>
-</body>
-</html>
+?>

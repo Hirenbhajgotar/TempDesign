@@ -27,7 +27,7 @@
                 <div class="uk-navbar-right uk-light">
                     <ul class="uk-navbar-nav">
                         <li class="uk-active">
-                            <a href="#">Hiren <span uk-icon="chevron-down"></span></a>
+                            <a href="#">Hiren&nbsp;<i class="fas fa-angle-down"></i></a>
                             <div uk-dropdown="pos: bottom-right; mode: click; offset: -17;">
                                <ul class="uk-nav uk-navbar-dropdown-nav">
                                    <li class="uk-nav-header">Options</li>
@@ -59,8 +59,8 @@
                 <span uk-icon="link"></span> Links
             </li>
             <li><a href="<?= base_url('Deshbord/templates') ?>">Templates</a></li>
-            <li><a href="#!">Subscriptions</a></li>
-            <li><a href="#!">Feedback</a></li>
+            <li><a href="<?= base_url('deshbord/subscription') ?>">Subscriptions</a></li>
+            <li><a href="<?= base_url('deshbord/feedback') ?>">Feedback</a></li>
             
             <div class="uk-position-bottom">
                 <hr class="uk-divider-small uk-text-center">
@@ -87,9 +87,12 @@
                 <div uk-grid class="uk-grid-match uk-child-width-1-1@s uk-child-width-1-3@m uk-child-width-1-4@xl">
                     <div>
                         <div class="uk-card uk-card-default uk-card-body">
-                            <span class="statistics-text"><a href="#!" class="uk-link-reset">Templates</a></span><br />
+                            <span class="statistics-text"><a href="<?= base_url('Deshbord/templates') ?>" class="uk-link-reset">Templates</a></span><br />
                             <span class="statistics-number">
-                                125
+                                <?php 
+                               echo $total_rows;
+                                  
+                                 ?>
                             </span>
                         </div>
                     </div>
@@ -106,9 +109,9 @@
                     </div>
                     <div>
                         <div class="uk-card uk-card-default uk-card-body">
-                            <span class="statistics-text">Subscriptions</span><br />
+                            <span class="statistics-text"><a href="<?= base_url('Deshbord/subscription') ?>" class="uk-link-reset">Subscription</a></span><br />
                             <span class="statistics-number">
-                                158
+                                <?= $subc_rows; ?>
                                 <!-- <span class="uk-label uk-label-danger">
                                     13% <span class="ion-arrow-down-c"></span>
                                 </span> -->
@@ -119,7 +122,15 @@
                         <div class="uk-card uk-card-default uk-card-body">
                             <span class="statistics-text">Total Downloads</span><br />
                             <span class="statistics-number">
-                                158
+                                <?php
+                                  // echo "<pre>";        
+                                  //   print_r($total_downloads);
+                                  //   echo "</pre>";
+                                  //   exit;
+                                      echo $total_downloads->download;
+                                
+                                
+                                ?>
                                 <span class="uk-label uk-label-success">
                                     89% <i class="fas fa-arrow-up"></i>
                                 </span>
@@ -153,40 +164,7 @@
                 </div>
             </div>
         </div>
-
-
-				
-		<h1>hien</h1>
-
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-
-
-
+	
     </div>
 
 
@@ -198,14 +176,4 @@
 
 
 
-
-
-
-	<script src="<?= base_url('assets/admin/js/jquery-3.3.1.min.js') ?>"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.min.js" integrity="sha256-rqEXy4JTnKZom8mLVQpvni3QHbynfjPmPxQVsPZgmJY=" crossorigin="anonymous"></script>
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> -->
-	<script src="<?= base_url('assets/js/uikit.min.js') ?>"></script>
-	<script src="<?= base_url('assets/js/uikit-icons.min.js') ?>"></script>
-	<script src="<?= base_url('assets/admin/js/admin_script.js') ?>"></script>
-</body>
-</html>
+<?php include 'footer.php' ?>

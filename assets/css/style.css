@@ -103,6 +103,10 @@ body{
 	font-size: 35px;
 }
 
+/*subsribe email*/
+.uk-section .uk-container #subscription_form .uk-first-column p{
+	color: #F2758C !important;
+}
 
 
 

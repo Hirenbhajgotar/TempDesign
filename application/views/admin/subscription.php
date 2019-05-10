@@ -19,23 +19,22 @@
             <nav uk-navbar>
                 <div class="uk-navbar-left">
                     <a id="sidebar_toggle" class="uk-navbar-toggle" uk-navbar-toggle-icon ></a>
-                    <a href="#" class="uk-navbar-item uk-logo">
+                    <a href="<?= base_url('Deshbord') ?>" class="uk-navbar-item uk-logo">
                         <!-- UI Admin -->
                         TempDesign 
                     </a>
                 </div>
                 <div class="uk-navbar-right uk-navbar-item uk-light">
-                    <button uk-toggle="target: #add_temp_modal" class="uk-button uk-visible@s uk-button-default uk-flex uk-flex-middle" style="border-radius: 500px">Add template &nbsp;<span uk-icon="plus-circle"></span></button>
                     <ul class="uk-navbar-nav uk-visible@s">
                         <li class="uk-active">
-                            <a href="#">Hiren <span uk-icon="chevron-down"></span></a>
+                            <a href="#">Hiren&nbsp;<i class="fas fa-angle-down"></i></a>
                             <div uk-dropdown="pos: bottom-right; mode: click; offset: -17;">
                                <ul class="uk-nav uk-navbar-dropdown-nav">
                                    <li class="uk-nav-header">Options</li>
                                    <li><a href="#">Edit Profile</a></li>
                                    <li class="uk-nav-header">Actions</li>
                                    <li><a href="#">Lock</a></li>
-                                   <li><a href="#">Logout</a></li>
+                                   <li><a href="<?= base_url('Admin/logout') ?>">Logout</a></li>
                                </ul>
                             </div>
                         </li>
@@ -61,13 +60,13 @@
                 <span uk-icon="link"></span> Links
             </li>
             <li><a href="<?= base_url('Deshbord/templates') ?>">Templates</a></li>
-            <li class="uk-active"><a href="<?= base_url('Deshbord/Subscriptions') ?>">Subscriptions</a></li>
+            <li class="uk-active"><a href="<?= base_url('Deshbord/subscription') ?>">Subscriptions</a></li>
             <li><a href="<?= base_url('Deshbord/feedback') ?>">Feedback</a></li>
             
             <div class="uk-position-bottom">
                 <hr class="uk-divider-small uk-text-center">
                 
-                <li><a href="#!" class="uk-text-center uk-link-reset uk-flex uk-flex-middle uk-margin-medium">Logout <i class="fas fa-power-off"></i></a></li>
+                <li><a href="<?= base_url('Admin/logout') ?>" class="uk-text-center uk-link-reset uk-flex uk-flex-middle uk-margin-medium">Logout <i class="fas fa-power-off"></i></a></li>
             </div>
         </ul>
     </div>
@@ -79,9 +78,9 @@
                 <h2 class="ad_heading"><i class="fas fa-user-edit"></i> Subscriptions</h2>
                 
                 <ul class="uk-breadcrumb">
-                    <li><a href="deshbord.html">Home</a></li>
-                    <li><a href="deshbord.html">Deshbord</a></li>
-                    <li><a href="templates.html">Subscriptions</a></li>
+                    <li><a href="<?= base_url('deshbord') ?>">Home</a></li>
+                    <li><a href="<?= base_url('deshbord') ?>">Deshbord</a></li>
+                    <li><a href="<?= base_url('deshbord/subscription') ?>">Subscriptions</a></li>
                 </ul>
             </div>
         </div>
@@ -89,100 +88,44 @@
             <div class="uk-container uk-container-large">
                 <div uk-grid class="uk-child-width-1-1@s uk-child-width-1-1@m uk-child-width-1-1@l">
                     <div>
-                        <ul class="uk-list uk-list-large uk-list-divider subscription">
-                            <li class="active uk-text-bold"><big>#</big> &nbsp; <i class="fas fa-user-circle"></i> Users <span class="uk-align-right"><i class="far fa-clock"></i> Subscribed at</span></li>
-                            <li><big><b>1.</b></big>&nbsp; bhajgptar@gmail.com <span class="uk-align-right">13/Aug/2018</span></li>
-                            <li><big><b>2.</b></big>&nbsp; hiren@gmail.com <span class="uk-align-right">13/Nov/2018</span></li>
-                            <li><big><b>3.</b></big>&nbsp; anil@gmail.com <span class="uk-align-right">2/Jan/2019</span></li>
-                        </ul>
+                        <table class="uk-table uk-table-divider uk-table-large">
+                            <thead>
+                                <tr>
+                                    <th><big>#</big></th>
+                                    <th class="uk-text-capitalize"><big><i class="fas fa-user-circle"></i> Subscriber</big></th>
+                                    <th class="uk-text-capitalize"><big><i class="far fa-clock"></i> Subscribed at</big></th>
+                                    <th class="uk-text-capitalize"><big>Delete</big></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    if (isset($data)) {
+                                        if (count($data)) {
+                                            $count = $this->uri->segment(3);
+                                        }
+                                    }
+                                ?> 
+                                <?php
+                                    foreach ($data as $value) {
+                                        ?>
+                                            <tr>
+                                                <td><?= ++$count ?></td>
+                                                <td><?= $value->email ?></td>
+                                                <td><?= $value->subscribed_at ?></td>
+                                                <!-- <td><button href="<?= base_url() ?>" class="red-color uk-button uk-button-default"><i class='far fa-trash-alt'></i></button></td> -->
+                                                <td><?= anchor("Subscription/del_subscriber/{$value->id}", "<i class='far fa-trash-alt'></i>", ['class'=>'red-color uk-button uk-button-default']) ?></td>
+                                            </tr>
+                                        <?php
+                                    }
+                                ?>
+                            </tbody>
+                        </table>
                     </div>
                    
                 </div>
                 
             </div>
         </div>
-
-
-
-
-        
-        <!-- This is the Add template modal -->
-        <div id="add_temp_modal" uk-modal>
-            <div class="uk-modal-dialog uk-modal-body uk-text-center uk-border-rounded">
-                <button class="uk-modal-close-default" type="button" uk-close></button>
-                <h2 class="uk-modal-title">Add Template</h2>
-                <hr class="uk-divider-small">
-                <form action="#!" class="uk-margin-large-top">
-                    <div class="uk-margin">
-                        <div class="uk-inline">
-                            <i class="fas fa-pen icon uk-form-icon"></i>
-                            <input class="uk-input uk-form-width-large" type="text" placeholder="template header">
-                        </div>
-                    </div>
-
-                    <div class="uk-margin">
-                        <div class="uk-inline">
-                            <i class="fas fa-pen icon  uk-form-icon"></i>
-                            <input class="uk-input uk-form-width-large" type="text" placeholder="Sub heading">
-                        </div>
-                    </div>
-                    <div class="uk-margin">
-                        <div class="uk-inline">
-                            <i class="fas fa-image icon  uk-form-icon"></i>
-                            <input class="uk-input uk-form-width-large" type="text" placeholder="Template image">
-                        </div>
-                    </div>
-                    <div class="uk-margin">
-                        <div class="uk-inline">
-                            <i class="fas fa-file-archive icon  uk-form-icon"></i>
-                            <input class="uk-input uk-form-width-large" type="text" placeholder="Template zip">
-                        </div>
-                    </div>
-                    <div class="uk-text-left uk-margin-left">
-                        
-                        <button class="uk-button uk-button-primary uk-width-1-3@m">Submit</button>
-                        <button class="uk-button uk-button-danger uk-width-1-3@m">Cancle</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-
-
-
-
-
-				
-		<h1>hien</h1>
-
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-		<h1>hien</h1>
-
-
 
     </div>
 
@@ -196,13 +139,39 @@
 
 
 
+<?php include 'footer.php' ?>
+<?php
+    if ($success = $this->session->flashdata('success')) {
+        if (isset($success)) {
+            $success_msg = $success;
+            ?>
+            <script>
+                UIkit.notification({
+                    message: '<?php echo $success_msg ?>'+' <i class="fas fa-thumbs-up"></i>',
+                    status: 'success',
+                    pos: 'top-right',
+                    timeout: 5000
+                });
+            </script>
+            <?php
+        }
+    }
+
+    if ($error = $this->session->flashdata('error')) {
+        if (isset($error)) {
+            $error_msg = $error;
+            ?>
+            <script>
+                UIkit.notification({
+                    message: '<i class="fas fa-exclamation"></i> '+'<?php echo $error_msg ?>',
+                    status: 'danger',
+                    pos: 'top-right',
+                    timeout: 5000
+                });
+            </script>
+            <?php
+        }
+    }
 
 
-	<script src="<?= base_url('assets/admin/js/jquery-3.3.1.min.js') ?>"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.transit/0.9.12/jquery.transit.min.js" integrity="sha256-rqEXy4JTnKZom8mLVQpvni3QHbynfjPmPxQVsPZgmJY=" crossorigin="anonymous"></script>
-	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script> -->
-	<script src="<?= base_url('assets/js/uikit.min.js') ?>"></script>
-	<script src="<?= base_url('assets/js/uikit-icons.min.js') ?>"></script>
-	<script src="<?= base_url('assets/admin/js/admin_script.js') ?>"></script>
-</body>
-</html>
+?>

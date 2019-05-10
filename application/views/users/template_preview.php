@@ -104,7 +104,7 @@
 
 	        <div class=" uk-light uk-margin-top background">
 	            <div class="uk-container uk-flex uk-flex-middle" >
-	               	<h1 class="uk-heading-bullet temp_heading">creative page</h1>
+	               	<h1 class="uk-heading-bullet temp_heading"><?= $data->temp_header ?></h1>
 	            </div>
 	        </div>
         </div>
@@ -118,12 +118,12 @@
 
 	        <div class="" uk-grid>
 	            <div class="uk-width-expand@m">
-					<img class="uk-box-shadow-large uk-border-rounded" data-src="assets/images/rawpixel-777256-unsplash.jpg" uk-img alt="">
+					<img class="uk-box-shadow-large uk-border-rounded" data-src="<?= base_url('image_upload/'.$data->temp_image) ?>" uk-img alt="">
 	            </div>
 	            <div class="uk-width-1-3@m">
 					<div class="uk-card uk-card-default uk-dark uk-background-muted uk-card-body">
-						<button class="uk-button uk-button-large temp_download uk-button-default uk-width-1-1 uk-margin-small-bottom"><i class="fas fa-cloud-download-alt"></i> free download</button>
-					    <button class="uk-button uk-button-large live_pre uk-button-default uk-width-1-1 uk-margin-small-bottom"><i class="far fa-eye"></i> live demo</button>
+						<?= anchor("Template/download_template/{$data->id}","<i class='fas fa-cloud-download-alt'></i> free download",['class'=>'uk-button uk-button-large temp_download uk-button-default uk-width-1-1 uk-margin-small-bottom']) ?>
+					    <?= anchor("Template/preview/{$data->id}","<i class='far fa-eye'></i> live demo",['class'=>'uk-button uk-button-large live_pre uk-button-default uk-width-1-1 uk-margin-small-bottom']) ?>
 					</div>
 					<div class="uk-margin">	
 						<div class="uk-card uk-card-default uk-background-muted uk-card-body">
@@ -134,15 +134,24 @@
 							    <tbody>
 							        <tr>
 							        	<th class="uk-text-capitalize">Framework</th>
-							            <td>Uikit</td>
+							            <td><?= $data->freamwork_name ?></td>
 							        </tr>
 							        <tr>
 							        	<th class="uk-text-capitalize">Framework verson</th>
-							            <td>3.1</td>
+							            <td><?= $data->freamwork_ver ?></td>
 							        </tr>
 							        <tr>
 							        	<th class="uk-text-capitalize">Released</th>
-							            <td>Feb 4, 2019</td>
+							            <td>
+							            	<?php
+							            		if (!empty($data->update_at)){
+							            			echo $data->update_at;
+							            		}
+							            		else{
+							            			echo $data->upload_at;
+							            		}
+							            	?>
+							            </td>
 							        </tr>
 							        <tr>
 							        	<th class="uk-text-capitalize">Browsers</th>
@@ -161,7 +170,8 @@
 					    <h3 class="uk-card-title">Description</h3>
 					    <hr>
 						<p class="paragraph">
-							Creative is a one page Bootstrap theme for creatives, small businesses, and other multipurpose use. A modern, flat design style works in unison with rich features and plugins making this theme a great boilerplate for your next Bootstrap based project!
+							<!-- Creative is a one page Bootstrap theme for creatives, small businesses, and other multipurpose use. A modern, flat design style works in unison with rich features and plugins making this theme a great boilerplate for your next Bootstrap based project! -->
+							<?= $data->description ?>
 						</p>
 					</div>
 				</div>
@@ -206,7 +216,6 @@
 
 	
 
-
 	<!-- footer -->
 	<div class="uk-section" id="contect" >
 	    <div class="uk-container ">
@@ -250,5 +259,25 @@
 
 	<script src="<?= base_url('assets/js/uikit.min.js') ?>"></script>
 	<script src="<?= base_url('assets/js/uikit-icons.min.js') ?>"></script>
+
+	<?php
+	// error massage
+		if ($error = $this->session->flashdata('error')) {
+			if (isset($error)) {
+				$error_msg = $error;
+				?>
+				<script>
+	                UIkit.notification({
+	                    message: '<i class="fas fa-exclamation"></i> '+'<?php echo $error_msg ?>'+' <i class="fas fa-sad-tear"></i>',
+	                    status: 'danger',
+	                    pos: 'bottom-right',
+	                    timeout: 5000
+	                });
+	            </script>
+	            <?php
+			}
+		}
+	?>
+
 </body>
 </html>

@@ -155,19 +155,38 @@
 }
 
 /* LOGIN PAGE */
-.login_page .uk-flex .heading{
+.login_page .uk-flex .heading, /* login page */
+.register_page .uk-flex .heading{ /* register page */
     font-size: 30px;
     color: #e4e4e4;
 }
-.login_page .uk-flex button{
-    background-color: var(--secondry-color);
-    color: #fff;
+.login_page .uk-flex .login-btn,
+.login_page .uk-flex .login-csl-btn,
+.register_page .uk-flex .register-btn,
+.register_page .uk-flex .register-csl-btn{
+    background-color: transparent !important;
+}
+.login_page .uk-flex .login-btn i,
+.register_page .uk-flex .register-btn i{
+    /*background-color: var(--secondry-color);*/
+    color: #1e87f0;
+    font-size: 30px;
+}
+.login_page .uk-flex .login-csl-btn i,
+.login_page .uk-flex .register-csl-btn i,
+.register_page .uk-flex .register-csl-btn i{
+    color: #1e87f0;
+    font-size: 30px;
 }
 .login_page .uk-container .sec_color{
     color: var(--secondry-color);
 }
 /* ! LOGIN PAGE */
 
+
+/* REGISTER PAGE */
+
+/* !REGISTER PAGE */
 
 
 /* TEMPLATES PAGE */

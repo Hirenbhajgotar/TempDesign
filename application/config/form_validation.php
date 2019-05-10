@@ -33,6 +33,46 @@ $config = [
 			'rules' => 'required|alpha_dash'
 		]
 
+	],
+
+	'add_template' => [
+		[
+			'field' => 'temp_header',
+			'label' => 'Template heading',
+			'rules' => 'required'
+		],
+		[
+			'field' => 'temp_sub_header',
+			'label' => 'Template sub heading',
+			'rules' => 'required'
+		],
+		[
+			'field' => 'freamwork_name',
+			'label' => 'Freamework name',
+			'rules' => 'required'
+		],
+		[
+			'field' => 'freamwork_ver',
+			'label' => 'Freamework version',
+			'rules' => 'required'
+		],
+		[
+			'field' => 'description',
+			'label' => 'Description',
+			'rules' => 'required'
+		]
+	],
+
+
+	'subscriber' => [
+		[
+			'field'  => 'email',
+			'label'  => 'Email',
+			'rules'  => 'required|is_unique[subscrition.email]|valid_email',
+			'errors' => [
+				'is_unique' =>'this %s is already subscribed'
+			],
+		]
 	]
 
 

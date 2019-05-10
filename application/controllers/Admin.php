@@ -22,7 +22,7 @@ class Admin extends CI_Controller
     			return redirect('Deshbord');
     		}
     		else{
-    			$this->session->set_flashdata('msg', 'Invalid Email or Password');
+    			$this->session->set_flashdata('msg', 'Email or Password Dosnt Match');
     			return redirect('admin/login');
     		}
     		

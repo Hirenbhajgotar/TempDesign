@@ -12,7 +12,10 @@
 	
 	<!-- typed js -->
 	<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.9"></script>
-	<!-- <link rel="stylesheet" href="assets/css/style.css"> -->
+	<!-- parsley js -->
+	<link rel="stylesheet" href="<?= base_url('assets/admin/css/parsley.css') ?>">
+	
+	<!-- custom style -->
 	<link rel="stylesheet" href="<?= base_url('/assets/css/style.css') ?>">
 </head>
 <body>
@@ -136,20 +139,44 @@
 	    <div class="uk-container">
 
 	        <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
+	            	
+	            <?php
+	            	foreach ($res as $value) {
+	            		?>
+	            		<div>
+							<div class="uk-card uk-box-shadow-hover-large uk-card-default uk-card-small">
+								<div class="uk-card-media-top">
+									<a class="uk-link-reset" href="<?= base_url("Template/template_preview/{$value->id}") ?>">
+										<img src="<?= base_url('image_upload/'.$value->temp_image) ?>" alt="">
+									</a>
+								</div>
+								<div class="uk-card-body">
+									<a class="uk-link-reset" href="<?= base_url("Template/template_preview/{$value->id}") ?>">
+										<h3 class="uk-card-title uk-margin-remove" uk-tooltip="Preview & Download"><?= $value->temp_header ?></h3>  
+									</a>
+									<p class="uk-margin-remove"><?= $value->temp_sub_header ?></p>
+								</div>
+							</div>
+			            </div>
+
+
+	            	<?php
+	            	}
+	            ?>
 	            <div>
-						<div class="uk-card uk-box-shadow-hover-large uk-card-default uk-card-small">
-							<div class="uk-card-media-top">
-								<a class="uk-link-reset" href="<?= base_url('Template') ?>">
-									<img src="<?= base_url('/assets/images/rawpixel-740331-unsplash.jpg') ?>" alt="">
-								</a>
-							</div>
-							<div class="uk-card-body">
-								<a class="uk-link-reset" href="<?= base_url('Template') ?>">
-									<h3 class="uk-card-title uk-margin-remove" uk-tooltip="Preview & Download">creative page</h3>
-								</a>
-								<p class="uk-margin-remove">A page creative theme</p>
-							</div>
+					<div class="uk-card uk-box-shadow-hover-large uk-card-default uk-card-small">
+						<div class="uk-card-media-top">
+							<a class="uk-link-reset" href="<?= base_url('Template') ?>">
+								<img src="<?= base_url('/assets/images/rawpixel-740331-unsplash.jpg') ?>" alt="">
+							</a>
 						</div>
+						<div class="uk-card-body">
+							<a class="uk-link-reset" href="<?= base_url('Template') ?>">
+								<h3 class="uk-card-title uk-margin-remove" uk-tooltip="Preview & Download">creative page</h3>
+							</a>
+							<p class="uk-margin-remove">A page creative theme</p>
+						</div>
+					</div>
 	            </div>
 	            <div>
 					<div class="uk-card uk-card-default uk-box-shadow-hover-large uk-card-small">
@@ -213,8 +240,11 @@
 	    </div>
 	</div>
 	
+
 	
-	<!-- Contect -->
+
+	
+	<!-- Footer -->
 	<div class="uk-section" id="contect" >
 	    <div class="uk-container ">
 
@@ -225,12 +255,27 @@
 	            <div class=" uk-text-center uk-light">
 	            	<h2 class="uk-margin-remove">Want more templates?</h2>
 	            	<p class="uk-margin-remove uk-text-muted">Subscribe to get awsome framework related Templates</p>
-					<form action="#!" class="uk-margin" uk-margin>
+					<form action="<?= base_url('Subscription') ?>" method="post" id="subscription_form" class="uk-margin" uk-margin>
 						<div class="">
 					        <div class="uk-inline">
-					            <a class="uk-form-icon uk-form-icon-flip " href="#"><i class="fas fa-paper-plane"></i></a>
-					            <input class="uk-input uk-form-width-large uk-form-large" type="text" placeholder="Email address..">
-					        </div>
+					            <!-- <button class="uk-form-icon uk-form-icon-flip" id="focus" type="submit" style="background-color: #6f5090; border-left: none; border-width: 0.5px; border-color: #b7a7c7; cursor: pointer;"><i class="fas fa-paper-plane"></i></button> -->
+								<button type="submit" id="focus" class=" uk-button uk-button-default uk-button-large"><i class="fas fa-paper-plane"></i></button>
+					            <input id="email" name="email" type="email" class="uk-input uk-form-width-large uk-form-large" placeholder="Email address.." data-parsley-required data-parsley-type="email" data-parsley-trigger="keyup">
+							</div>
+						
+							<?= form_error('email') ?>
+										
+				        	<?php
+				        		if (!empty(form_error('email'))) {
+				        			?>
+										<script>
+											// window.onload = function() {
+											  var input = document.getElementById("email").focus();
+											// }
+										</script>
+				        			<?php
+				        		}
+				        	?>
 					    </div>
 					</form>
 	            </div>
@@ -247,13 +292,6 @@
 	<div class="uk-section uk-section-xsmall uk-section-muted">
 	    <div class="uk-container">
 	        <div class="uk-grid-match uk-child-width-1-1@m" uk-grid>
-	            <!-- <div>
-	            	<h2>Templates</h2>
-	            	<span>Bootstrap</span>
-	            	<span>Materialize css</span>
-	            	<span>Bulma</span>
-	            	<span>Uikit</span>
-	            </div> -->
 	            <div>
 	            	<span class="uk-align-right">© 2019 TempDesign. All rights reserved.</span>
 					<!-- <a href="#!" style="display: inline;" class="uk-link-reset"><i class="fas fa-paper-plane"></i></a>
@@ -266,7 +304,8 @@
 	</div>
 
 
-
+	
+	<script src="<?= base_url('assets/admin/js/jquery-3.3.1.min.js') ?>"></script>
 	<script src="<?= base_url('/assets/js/uikit.min.js') ?>"></script>
 	<script src="<?= base_url('/assets/js/uikit-icon.min.js') ?>"></script>
 	<script>
@@ -281,5 +320,58 @@
 		    loop: true
 		  });
 	</script>
+
+	<!-- parsley js -->
+	<script src="<?= base_url('assets/admin/js/Dist/parsley.min.js') ?>"></script>
+	<script>
+		$('#subscription_form').parsley();
+	</script>
+
+	<!-- preventing form resubmission -->
+	<script>
+	    if ( window.history.replaceState ) {
+	        window.history.replaceState( null, null, window.location.href );
+	    }
+	</script>
+
+
+	<?php 
+		// success masssage
+		if ($success = $this->session->flashdata('success')) {
+	        if (isset($success)) {
+	            $success_msg = $success;
+	            ?>
+	            <script>
+	                UIkit.notification({
+	                    message: '<?php echo $success_msg ?>'+' <i class="far fa-grin-beam"></i>',
+	                    status: 'primary',
+	                    pos: 'bottom-right',
+	                    timeout: 5000
+	                });
+	            </script>
+	            <?php
+	        }
+	    }
+
+		// error massage
+		if ($error = $this->session->flashdata('error')) {
+			if (isset($error)) {
+				$error_msg = $error;
+				?>
+				<script>
+	                UIkit.notification({
+	                    message: '<i class="fas fa-exclamation"></i> '+'<?php echo $error_msg ?>'+' <i class="fas fa-sad-tear"></i>',
+	                    status: 'danger',
+	                    pos: 'bottom-right',
+	                    timeout: 5000
+	                });
+	            </script>
+	            <?php
+			}
+		}
+
+	?>
 </body>
 </html>
+
+	
